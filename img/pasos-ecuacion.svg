@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-labelledby="t d">
+  <title id="t">Pasos para resolver x + 2 = 5</title>
+  <desc id="d">Tres tarjetas: primero la ecuación x + 2 = 5, luego restar 2 en ambos lados y finalmente la solución x = 3.</desc>
+  <style>text { font-family: Poppins, system-ui, sans-serif; font-weight: 600; }</style>
+  <rect x="10" y="30" width="170" height="130" rx="14" fill="#E4ECF7"/>
+  <text x="95" y="80" font-size="14" text-anchor="middle" fill="#14213D">Ecuación</text>
+  <text x="95" y="124" font-size="28" text-anchor="middle" fill="#2B59C3">x + 2 = 5</text>
+  <path d="M190 95 H228 M218 85 L230 95 L218 105" fill="none" stroke="#14213D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="235" y="30" width="170" height="130" rx="14" fill="#FFC53D"/>
+  <text x="320" y="80" font-size="14" text-anchor="middle" fill="#14213D">Resta 2 a cada lado</text>
+  <text x="320" y="124" font-size="24" text-anchor="middle" fill="#14213D">x + 2 − 2 = 5 − 2</text>
+  <path d="M415 95 H453 M443 85 L455 95 L443 105" fill="none" stroke="#14213D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="460" y="30" width="170" height="130" rx="14" fill="#2B59C3"/>
+  <text x="545" y="80" font-size="14" text-anchor="middle" fill="#FFFFFF">Solución</text>
+  <text x="545" y="124" font-size="30" text-anchor="middle" fill="#FFFFFF">x = 3</text>
+</svg>

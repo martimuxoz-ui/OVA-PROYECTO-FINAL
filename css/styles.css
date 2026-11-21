@@ -1,0 +1,519 @@
+/* =========================================================
+   OVA: Ecuaciones de primer grado (grados 6 y 7)
+   Hoja de estilos única para index.html y contenido.html
+   ========================================================= */
+
+/* ---------- 1. Variables: paleta (5 colores) y tipografía ---------- */
+:root {
+  --color-fondo: #F6F9FC;      /* fondo general */
+  --color-suave: #E4ECF7;      /* superficies y bordes suaves */
+  --color-texto: #14213D;      /* texto principal (azul noche) */
+  --color-primario: #2B59C3;   /* azul de marca */
+  --color-acento: #FFC53D;     /* amarillo: llamado a la acción */
+
+  --fuente-titulos: "Poppins", system-ui, sans-serif;
+  --fuente-texto: "Inter", system-ui, sans-serif;
+
+  --radio: 14px;
+  --espacio: 1.5rem;
+}
+
+/* ---------- 2. Reinicio y base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+p { margin: 0 0 1rem; max-width: 65ch; }
+
+/* ---------- 3. Encabezado y pie de página ---------- */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem clamp(1rem, 5vw, 4rem);
+}
+
+.encabezado p { margin: 0; }
+
+.encabezado__marca {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+.encabezado__grados { font-size: 0.95rem; }
+
+.encabezado__enlace {
+  color: var(--color-texto);
+  font-weight: 500;
+  text-underline-offset: 4px;
+  transition: color 0.25s ease-in-out;
+}
+
+.encabezado__enlace:hover { color: var(--color-primario); }
+
+.encabezado__enlace:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 3px;
+}
+
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 2rem;
+  padding: 1.25rem clamp(1rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-suave);
+  font-size: 0.9rem;
+}
+
+.pie p { margin: 0; }
+
+/* ---------- 4. Portada (index.html) ---------- */
+.portada {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem clamp(1rem, 5vw, 4rem);
+}
+
+.portada__titulo {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--color-texto);
+  animation: aparecer 0.9s ease-out both;
+}
+
+.portada__subtitulo {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  animation: aparecer 0.9s ease-out 0.2s both;
+}
+
+.portada__grafico {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--color-suave);
+  border-radius: 28px;
+}
+
+.portada__imagen { width: 100%; max-width: 420px; }
+
+/* ---------- 5. Botón "Continuar" (estados) ---------- */
+.boton {
+  display: inline-block;
+  padding: 1rem 2.75rem;
+  background: var(--color-acento);
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 3px solid var(--color-texto);
+  border-radius: 999px;
+  box-shadow: 0 5px 0 var(--color-texto);
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out, background 0.25s ease-in-out;
+  animation: aparecer 0.9s ease-out 0.4s both;
+}
+
+.boton:hover {
+  background: #FFD166;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 var(--color-texto);
+}
+
+.boton:focus-visible {
+  outline: 4px solid var(--color-primario);
+  outline-offset: 4px;
+}
+
+.boton:active {
+  background: #F2B313;
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--color-texto);
+}
+
+/* ---------- 6. Animaciones ---------- */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- 7. Contenido (contenido.html): estructura general ---------- */
+.contenido {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+.contenido__titulo {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- 8. Pestañas (solo CSS con radio + :checked) ---------- */
+.pestanas__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pestanas__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pestanas__etiqueta {
+  padding: 0.65rem 1.2rem;
+  background: var(--color-suave);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.25s ease-in-out, color 0.25s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.pestanas__etiqueta:hover { transform: translateY(-2px); }
+
+/* Pestaña activa */
+#tab-inicio:checked ~ .pestanas__nav label[for="tab-inicio"],
+#tab-intro:checked ~ .pestanas__nav label[for="tab-intro"],
+#tab-explicacion:checked ~ .pestanas__nav label[for="tab-explicacion"],
+#tab-videos:checked ~ .pestanas__nav label[for="tab-videos"],
+#tab-icfes:checked ~ .pestanas__nav label[for="tab-icfes"],
+#tab-creditos:checked ~ .pestanas__nav label[for="tab-creditos"] {
+  background: var(--color-primario);
+  color: #FFFFFF;
+}
+
+/* Foco visible con teclado */
+#tab-inicio:focus-visible ~ .pestanas__nav label[for="tab-inicio"],
+#tab-intro:focus-visible ~ .pestanas__nav label[for="tab-intro"],
+#tab-explicacion:focus-visible ~ .pestanas__nav label[for="tab-explicacion"],
+#tab-videos:focus-visible ~ .pestanas__nav label[for="tab-videos"],
+#tab-icfes:focus-visible ~ .pestanas__nav label[for="tab-icfes"],
+#tab-creditos:focus-visible ~ .pestanas__nav label[for="tab-creditos"] {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+/* Paneles: solo se muestra el seleccionado */
+.panel { display: none; }
+
+#tab-inicio:checked ~ .pestanas__paneles #panel-inicio,
+#tab-intro:checked ~ .pestanas__paneles #panel-intro,
+#tab-explicacion:checked ~ .pestanas__paneles #panel-explicacion,
+#tab-videos:checked ~ .pestanas__paneles #panel-videos,
+#tab-icfes:checked ~ .pestanas__paneles #panel-icfes,
+#tab-creditos:checked ~ .pestanas__paneles #panel-creditos {
+  display: block;
+  animation: aparecer 0.4s ease-out both;
+}
+
+/* ---------- Portada interna: pestaña Inicio ---------- */
+.panel--inicio {
+  min-height: 420px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6F9FC 72%, #E4ECF7 100%);
+  border: 1px solid var(--color-suave);
+  position: relative;
+}
+#tab-inicio:checked ~ .pestanas__paneles #panel-inicio { display: flex; }
+.inicio-panel__contenido { flex: 1 1 58%; min-width: 0; }
+.inicio-panel__etiqueta {
+  display: inline-block; padding: .4rem .85rem; border-radius: 999px;
+  background: var(--color-suave); color: var(--color-primario);
+  font-size: .75rem; font-weight: 700; letter-spacing: .09em;
+}
+.inicio-panel__titulo {
+  margin: 1.2rem 0 .85rem; color: var(--color-texto);
+  font-size: clamp(2rem, 4.8vw, 3.25rem); line-height: 1.13;
+}
+.inicio-panel__titulo span { color: var(--color-primario); }
+.inicio-panel__descripcion {
+  max-width: 590px; color: #46536B; line-height: 1.8;
+  font-size: clamp(1rem, 1.7vw, 1.12rem); margin-bottom: 1.5rem;
+}
+.inicio-panel__boton {
+  display: inline-flex; align-items: center; gap: .7rem; min-height: 48px;
+  padding: .8rem 1.55rem; border: 0; border-radius: 10px;
+  background: var(--color-acento); color: var(--color-texto);
+  font: 700 1rem var(--fuente-titulos); cursor: pointer;
+  box-shadow: 0 4px 0 #D6A21F; transition: transform .2s, box-shadow .2s, background .2s;
+}
+.inicio-panel__boton:hover { background: #FFD166; transform: translateY(2px); box-shadow: 0 2px 0 #D6A21F; }
+.inicio-panel__boton:focus-visible { outline: 3px solid var(--color-primario); outline-offset: 4px; }
+.inicio-panel__boton:active { transform: translateY(4px); box-shadow: none; }
+.inicio-panel__nota { margin: 1rem 0 0; color: #64718A; font-size: .88rem; }
+.inicio-panel__detalle {
+  flex: 0 1 260px; min-height: 230px; padding: 1.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 22px; background: var(--color-suave); color: var(--color-texto);
+  border: 1px solid #D4E0F0;
+}
+.inicio-panel__ecuacion, .inicio-panel__resultado {
+  font: 700 clamp(1.8rem, 4vw, 2.5rem) var(--fuente-titulos);
+  letter-spacing: .02em;
+}
+.inicio-panel__resultado { color: var(--color-primario); }
+.inicio-panel__linea { width: 72%; height: 3px; margin: 1rem 0; border-radius: 5px; background: var(--color-acento); }
+@media (max-width: 640px) {
+  .panel--inicio { min-height: 0; flex-direction: column; align-items: stretch; }
+  .inicio-panel__detalle { min-height: 150px; flex-basis: auto; }
+  .inicio-panel__boton { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .inicio-panel__boton { transition: none; } }
+
+/* ---------- 9. Contenido de los paneles ---------- */
+.panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: #FFFFFF;
+  border: 1px solid var(--color-suave);
+  border-radius: var(--radio);
+}
+
+.panel__titulo { font-size: 1.6rem; }
+
+.panel__subtitulo {
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+}
+
+.panel__imagen {
+  width: 100%;
+  max-width: 340px;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: var(--color-suave);
+  border-radius: var(--radio);
+}
+
+.panel__imagen--ancha { max-width: 640px; }
+
+.lista { padding-left: 1.3rem; margin: 0 0 1rem; }
+.lista li { margin-bottom: 0.4rem; }
+
+.destacado {
+  padding: 1rem 1.25rem;
+  background: var(--color-acento);
+  border-radius: var(--radio);
+  font-weight: 600;
+}
+
+/* ---------- 10. Videos ---------- */
+.videos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.video__titulo { font-size: 1rem; }
+
+.video__miniatura {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radio);
+  background: var(--color-suave);
+  text-decoration: none;
+}
+
+.video__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+.video__play {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.45rem 1rem;
+  background: var(--color-acento);
+  color: var(--color-texto);
+  border: 2px solid var(--color-texto);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.25s ease-in-out;
+}
+
+.video__miniatura:hover .video__imagen { transform: scale(1.05); }
+.video__miniatura:hover .video__play { transform: translateY(-3px); }
+
+.video__miniatura:focus-visible {
+  outline: 4px solid var(--color-primario);
+  outline-offset: 3px;
+}
+
+/* ---------- 11. Preguntas tipo ICFES ---------- */
+.pregunta {
+  margin: 1.5rem 0 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-suave);
+  border-radius: var(--radio);
+}
+
+.pregunta__numero {
+  padding: 0.15rem 0.8rem;
+  background: var(--color-primario);
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-family: var(--fuente-titulos);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pregunta__enunciado { font-weight: 500; margin-top: 0.5rem; }
+
+.opcion { position: relative; margin-bottom: 0.5rem; }
+
+.opcion__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opcion__etiqueta {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-suave);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+.opcion__etiqueta:hover { border-color: var(--color-primario); }
+
+.opcion__input:focus-visible + .opcion__etiqueta {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
+}
+
+/* Respuesta correcta: azul con marca ✓ */
+.opcion__input:checked + .opcion__etiqueta--correcta {
+  background: var(--color-primario);
+  border-color: var(--color-primario);
+  color: #FFFFFF;
+}
+
+.opcion__input:checked + .opcion__etiqueta--correcta::after {
+  content: "  ✓ Correcto";
+  font-weight: 600;
+}
+
+/* Respuesta incorrecta: amarillo con marca ✗ */
+.opcion__input:checked + .opcion__etiqueta:not(.opcion__etiqueta--correcta) {
+  background: var(--color-acento);
+  border-color: var(--color-texto);
+}
+
+.opcion__input:checked + .opcion__etiqueta:not(.opcion__etiqueta--correcta)::after {
+  content: "  ✗ Incorrecta";
+  font-weight: 600;
+}
+
+/* Un solo intento: al elegir una opción, la pregunta queda bloqueada */
+.pregunta:has(.opcion__input:checked) .opcion__etiqueta {
+  pointer-events: none;
+  cursor: default;
+}
+
+.pregunta:has(.opcion__input:checked) .opcion__etiqueta:not(.opcion__etiqueta--correcta) { opacity: 0.85; }
+
+/* Explicación: aparece al elegir cualquier opción */
+.explicacion {
+  display: none;
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  background: var(--color-suave);
+  border-radius: 10px;
+  font-size: 0.97rem;
+}
+
+.pregunta:has(.opcion__input:checked) .explicacion { display: block; }
+
+/* ---------- 11b. Puntuación final (contador solo con CSS) ---------- */
+.panel--icfes { counter-reset: aciertos; }
+
+.opcion__input:checked + .opcion__etiqueta--correcta { counter-increment: aciertos; }
+
+.puntaje {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-primario);
+  color: #FFFFFF;
+  border-radius: var(--radio);
+}
+
+.puntaje__titulo { margin-bottom: 0.25rem; }
+.puntaje__texto { margin: 0; font-size: 1.3rem; }
+.puntaje__valor::after { content: counter(aciertos) " de 7"; }
+
+/* ---------- 12. Diseño responsivo ---------- */
+@media (max-width: 900px) {
+  .portada {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .portada__subtitulo { margin-left: auto; margin-right: auto; }
+  .portada__grafico { order: -1; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+
+  .encabezado { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+
+  .videos { grid-template-columns: 1fr; }
+
+  .pestanas__nav { display: grid; grid-template-columns: 1fr 1fr; }
+  .pestanas__etiqueta { text-align: center; }
+
+  .boton { width: 100%; text-align: center; }
+}
+
+/* ---------- 13. Accesibilidad: respetar movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Presentación del OVA Aprende a resolver ecuaciones.">
+  <title>Aprende a resolver ecuaciones | OVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .inicio { flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:3rem 1.25rem; }
+    .inicio__contenido { width:min(100%, 800px); }
+    .inicio__etiqueta { display:inline-block; padding:.4rem 1rem; border-radius:999px; background:var(--color-suave); color:var(--color-primario); font-size:.78rem; font-weight:700; letter-spacing:.1em; }
+    .inicio__titulo { margin:1.2rem 0; color:var(--color-texto); font-size:clamp(2.4rem,6vw,4.3rem); }
+    .inicio__titulo span { color:var(--color-primario); }
+    .inicio__descripcion { max-width:650px; margin:0 auto 2rem; color:#46536b; font-size:clamp(1rem,2vw,1.2rem); line-height:1.8; }
+    .inicio__boton { display:inline-flex; align-items:center; gap:.65rem; padding:.85rem 1.6rem; border-radius:10px; background:var(--color-acento); color:var(--color-texto); font-weight:700; text-decoration:none; box-shadow:0 4px 0 #d6a21f; transition:transform .2s, box-shadow .2s; }
+    .inicio__boton:hover { transform:translateY(2px); box-shadow:0 2px 0 #d6a21f; }
+    .inicio__boton:focus-visible { outline:3px solid var(--color-primario); outline-offset:4px; }
+  </style>
+</head>
+<body class="pagina-portada">
+  <header class="encabezado">
+    <p class="encabezado__marca">MATEMÁTICAS · OVA</p>
+    <p class="encabezado__grados">Grados 6.° y 7.°</p>
+  </header>
+  <main class="inicio">
+    <section class="inicio__contenido" aria-labelledby="titulo-ova">
+      <p class="inicio__etiqueta">OBJETO VIRTUAL DE APRENDIZAJE</p>
+      <h1 class="inicio__titulo" id="titulo-ova">Aprende a resolver <span>ecuaciones</span></h1>
+      <p class="inicio__descripcion">En este OVA aprenderás qué son las ecuaciones de primer grado, cómo resolverlas paso a paso y cómo comprobar tus respuestas mediante ejemplos y actividades.</p>
+      <a class="inicio__boton" href="contenido.html">Continuar <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</body>
+</html>
